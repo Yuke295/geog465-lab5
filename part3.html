@@ -1,0 +1,45 @@
+<html>
+<head>
+  <title>Leaflet Essentials</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/>
+</head>
+<body>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <div id="mapid" style="width: 600px; height: 400px; margin: auto"></div>
+  <script>
+    var mymap = L.map('mapid',{
+      center: [39.92737016385863, -102.62283276807503],
+      zoom: 3});
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(mymap);
+
+     // var marker = L.marker([35.10418, -106.62987]);
+    // // var marker = L.marker([35.10418, -106.62987]).bindPopup("<h1>Marker 1</h1><p>I am a marker!</p>");
+    // var marker2 = L.marker([35.02381, -106.63811]);
+    //
+    // var myPopup = L.popup({keepInView:true, closeButton:false}).setContent("I am a marker!");
+    // marker.bindPopup(myPopup);
+    // marker2.bindPopup(myPopup);
+    //
+    // var polyline = L.polyline([[35.10418, -106.62987], [35.19738, -106.875], [35.07946, -106.80634]], {color:'red', weight:8});
+    // var myLayerGroup = L.layerGroup([marker, marker2, polyline]).addTo(mymap);
+    // var myFeatureGroup = L.featureGroup([marker, marker2, polyline]).addTo(mymap).setStyle({color:'purple', opacity:.5}).bindPopup("We have the same pop up!");
+    var marker = L.marker([42.378301240968064, -71.13014472671935], {riseOnHover:true, riseOffset:100, opacity:0.8, autoPan:true, interactive:true}).bindPopup("<h1>Hi! Welcome to Boston</h1>");
+    var marker2 = L.marker([41.93458041427949, -87.66743298752294], {riseOnHover:true, riseOffset:100, opacity:0.8, autoPan:true, interactive:true}).bindPopup("<h1>Hi! Welcome to Chicago</h1>");
+
+    var polyline = L.polyline([[40.63351049893507, -122.3678157941345], [40.67676408184976, -122.34934481402576]], {color:'purple', weight:5, smoothFactor:0.1, noClip:true}).bindPopup("<h1>Part of I5 Highway</h1>");
+    var polyline2 = L.polyline([[40.829349471245976, -122.76143708084264], [40.857860360626134, -122.7329033526425], [40.90724957803145, -122.69860767760574], [40.98178554630681, -122.66753225633727]], {color:'purple', weight:5, smoothFactor:0.1, noClip:true}).bindPopup("<h1>Part of Trinity Lake</h1>");
+
+    var polygon = L.polygon([[[45.00116451676382, -111.07805609000097],[40.99981830261994, -111.05192605187776],[41.008245047444994, -104.0490480131546],[45.01239130643597, -104.0704386582421]]],{color:'purple', weight:5, fillColor:'blue', fillOpacity:0.5, noClip:true}).bindPopup("<h1>WYOMING</h1>");
+    var polygon2 = L.polygon([[[41.0043080336287, -109.03310648116882],[37.02837508684171, -109.05507913655708],[36.993283800983356, -102.04580206770011],[41.02088783735132, -102.08974737847662]]],{color:'purple', weight:5, fillColor:'blue', fillOpacity:0.5, noClip:true}).bindPopup("<h1>COLORADO</h1>");
+
+    var myLayerGroup = L.layerGroup([marker, marker2, polyline, polyline2, polygon, polygon2]).addTo(mymap);
+
+  </script>
+  <p>For the marker class option, I add opacity class to change the opacity of the points. I add riseOnHover class and make it true to make the maker get on top of others when hover the mouse over it.</p>
+  <p>For the polyline class option, I add smoothFactor class to simplify the polyline on each zoom level.</p>
+  <p>For the polygon class option, I add noClip class to make is as true to enable polyline clipping.</p>
+
+</body>
+</html>
